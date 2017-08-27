@@ -1,53 +1,67 @@
-// Search Controller
-var searchController = (function () {
-    //'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&prop=extracts&exlimit=max&explaintext&exintro&exsentences=1&gsrsearch=eminem'
+var userInput;
+var wikiLink = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=search&prop=extracts|info&exintro&exsentences=1&exlimit=max&formatversion=2&inprop=url&callback=jsonData&gsrsearch=';
+
+function getJSONP() {
+    //Create a SCRIPT element.
+    var script = document.createElement('script');
+
+    //Set the Type.
+    script.type = 'text/javascript';
+
+    //Set the source to the URL the JSON Service.
+    script.src = wikiLink + userInput;
+
+    //Append the script element to the HEAD section.
+    document.getElementsByTagName('head')[0].appendChild(script);
+};
+
+function inputFromUser() {
     
-    //'https://en.wikipedia.org/w/api.php?format=json&action=query&list=search&srprop=snippet&srlimit=10&srsearch=eminem'
+    userInput = document.querySelector('.search').value;
 
-    var wikiURL = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&prop=extracts&exlimit=max&explaintext&exintro&exsentences=1&gsrsearch=eminem'
+    userInput !== ''? getJSONP() : null;
+    
+};
 
-    document.querySelector('.submit').addEventListener('click', function() {
-        
-        function jsonp(uri) {
-            return new Promise(function(resolve, reject) {
-                var id = '_' + Math.round(10000 * Math.random());
-                var callbackName = 'jsonp_callback_' + id;
-                window[callbackName] = function(data) {
-                    delete window[callbackName];
-                    var ele = document.getElementById(id);
-                    ele.parentNode.removeChild(ele);
-                    resolve(data);
-                };
 
-                var src = uri + '&callback=' + callbackName;
-                var script = document.createElement('script');
-                script.src = src;
-                script.id = id;
-                script.addEventListener('error', reject);
-                (document.getElementsByTagName('head')[0] || document.body || document.documentElement).appendChild(script);
-            });
-        };
-        
-        jsonp(wikiURL).then(function(data){
-            console.log(data)
-        });
-        
+function setupEventListeners() {
+    document.querySelector('.submit').addEventListener('click', function () {
+
+        inputFromUser();
     });
-    
-})();
+
+    document.addEventListener('keypress', function (event) {
+        
+        if (event.keyCode === 13 || event.which === 13) {
+            
+            inputFromUser();
+        }
+    });
+}
 
 
-// UI Controller
-var UIController = (function () {
+// Callback function to manipulate data recived from API call
+function jsonData(data) {
+    console.log(data)
 
-    // Some code
+    data.query.pages.forEach(function (el) {
+        
+        var card = '<div class="input-container" id="card-' + el + '"><h4>' + el.title + '</h4>' + el.extract + '..' + '</div>';
 
-})();
+        console.log(card);
+
+        document.querySelector('#search-results').innerHTML += card;
+
+    });
+};
 
 
-// Global App Controller
-var controller = (function () {
+function init() {
+    console.log('Application has started');
+    setupEventListeners();
+}
 
-    // Some code
+init();
 
-})(searchController, UIController);
+
+//   'https://en.wikipedia.org/w/api.php?action=query&prop=extracts|info&exintro&exlimit=max&inprop=url&generator=search&gsroffset=&format=json&formatversion=2&callback=jsonData&gsrsearch=' + userInput + '&continue=';
