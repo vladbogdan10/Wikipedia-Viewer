@@ -22,25 +22,27 @@ function jsonData(data) {
 
     data.query.pages.forEach(function (el) {
 
-        var card = '<a href=" ' + el.fullurl + ' " target="_blank"><div class="input-container" id="card-' + el + '"><h4>' + el.title + '</h4>' + el.extract + '..' + '</div></a>';
+        var wikiContent = '<a href=" ' + el.fullurl + ' " target="_blank"><div class="wiki-content" id="card-' + el + '"><h4>' + el.title + '</h4>' + el.extract + '..' + '</div></a>';
 
-        document.querySelector('#search-results').innerHTML += card;
+        document.querySelector('#search-results').innerHTML += wikiContent;
     });
 };
 
 
 function DOMControl() {
-    userInput = document.querySelector('.search').value;
+    userInput = document.querySelector('.input-field').value;
 
-    userInput !== '' ? getJSONP() : null;
+    if (userInput !== '') {
+        getJSONP();
 
-    document.querySelector('.search').value = "";
+        document.querySelector('.wrapper').classList.add('move-up');
 
-    document.querySelector('.wrapper').classList.add('move-up');
+        document.getElementsByTagName("h1")[0].style.display = "none";
+        
+        document.querySelector('#search-results').innerHTML = "";
+    }
 
-    document.getElementsByTagName("h1")[0].style.display = "none";
-
-    document.querySelector('#search-results').innerHTML = "";
+    document.querySelector('.input-field').value = "";
 };
 
 

@@ -23,7 +23,7 @@ input {
     margin-bottom: 40px;
 }
 
-.search {
+.input-field {
     padding: 0 30px;
     font-size: 18px;
     width: 60%;
@@ -58,7 +58,7 @@ h4 {
 }
 
 /* Display content from query search */
-.input-container {
+.wiki-content {
     position: relative;
     border: 1px solid #F6F6F6;
     padding-left: 20px;
@@ -78,7 +78,7 @@ h4 {
     cursor: pointer;
 }
 
-.input-container::after {
+.wiki-content::after {
     content: "";
     border-radius: 8px;
     position: absolute;
@@ -93,7 +93,7 @@ h4 {
     transition: all 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.input-container:hover::after {
+.wiki-content:hover::after {
     opacity: 1;
 }
 
@@ -111,23 +111,6 @@ a:visited {
     margin-top: 5vh;
     margin-bottom: 40px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
