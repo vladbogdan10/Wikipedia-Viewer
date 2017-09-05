@@ -42,6 +42,7 @@ input {
     width: 100px;
     height: 50px;
     margin-left: -5px;
+    outline: none;
 }
 
 .submit:hover {
@@ -53,7 +54,7 @@ input {
 }
 
 h4 {
-    border-bottom: 1px solid #F1F1F1;
+    border-bottom: 1px solid #ECECEC;
 }
 
 /* Display content from query search */
@@ -96,6 +97,20 @@ h4 {
     opacity: 1;
 }
 
+a:link { 
+    color: #333333;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #717171;
+}
+
+.move-up {
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 40px;
+}
 
 
 

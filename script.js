@@ -15,53 +15,53 @@ function getJSONP() {
     document.getElementsByTagName('head')[0].appendChild(script);
 };
 
-function inputFromUser() {
-    
+
+// Callback function to manipulate data recived from API call
+function jsonData(data) {
+    console.log(data);
+
+    data.query.pages.forEach(function (el) {
+
+        var card = '<a href=" ' + el.fullurl + ' " target="_blank"><div class="input-container" id="card-' + el + '"><h4>' + el.title + '</h4>' + el.extract + '..' + '</div></a>';
+
+        document.querySelector('#search-results').innerHTML += card;
+    });
+};
+
+
+function DOMControl() {
     userInput = document.querySelector('.search').value;
 
-    userInput !== ''? getJSONP() : null;
-    
+    userInput !== '' ? getJSONP() : null;
+
+    document.querySelector('.search').value = "";
+
+    document.querySelector('.wrapper').classList.add('move-up');
+
+    document.getElementsByTagName("h1")[0].style.display = "none";
+
+    document.querySelector('#search-results').innerHTML = "";
 };
 
 
 function setupEventListeners() {
     document.querySelector('.submit').addEventListener('click', function () {
 
-        inputFromUser();
+        DOMControl();
     });
 
     document.addEventListener('keypress', function (event) {
-        
         if (event.keyCode === 13 || event.which === 13) {
-            
-            inputFromUser();
+
+            DOMControl();
         }
-    });
-}
-
-
-// Callback function to manipulate data recived from API call
-function jsonData(data) {
-    console.log(data)
-
-    data.query.pages.forEach(function (el) {
-        
-        var card = '<div class="input-container" id="card-' + el + '"><h4>' + el.title + '</h4>' + el.extract + '..' + '</div>';
-
-        console.log(card);
-
-        document.querySelector('#search-results').innerHTML += card;
-
     });
 };
 
 
 function init() {
-    console.log('Application has started');
+    console.log('Application has started.');
     setupEventListeners();
-}
+};
 
 init();
-
-
-//   'https://en.wikipedia.org/w/api.php?action=query&prop=extracts|info&exintro&exlimit=max&inprop=url&generator=search&gsroffset=&format=json&formatversion=2&callback=jsonData&gsrsearch=' + userInput + '&continue=';
