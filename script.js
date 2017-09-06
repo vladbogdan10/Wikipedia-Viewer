@@ -35,10 +35,10 @@ function DOMControl() {
     if (userInput !== '') {
         getJSONP();
 
-        document.querySelector('.wrapper').classList.add('move-up');
+        document.querySelector('.wrapper').classList.add('move-input-up');
 
         document.getElementsByTagName("h1")[0].style.display = "none";
-        
+
         document.querySelector('#search-results').innerHTML = "";
     }
 
@@ -60,10 +60,4 @@ function setupEventListeners() {
     });
 };
 
-
-function init() {
-    console.log('Application has started.');
-    setupEventListeners();
-};
-
-init();
+setupEventListeners();
