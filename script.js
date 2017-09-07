@@ -1,4 +1,4 @@
-var gsroffset;
+var loadMore;
 var userInput;
 
 function getJSONP() {
@@ -9,7 +9,7 @@ function getJSONP() {
     script.type = 'text/javascript';
 
     //Set the source to the URL the JSON Service.
-    script.src = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=search&prop=extracts|info&exintro&exsentences=1&exlimit=max&formatversion=2&inprop=url&callback=jsonData&gsroffset=' + gsroffset + '&gsrsearch=' + userInput;
+    script.src = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=search&prop=extracts|info&exintro&exsentences=1&exlimit=max&formatversion=2&inprop=url&callback=jsonData&gsroffset=' + loadMore + '&gsrsearch=' + userInput;
 
     //Append the script element to the HEAD section.
     document.getElementsByTagName('head')[0].appendChild(script);
@@ -30,7 +30,7 @@ function jsonData(data) {
         
         document.querySelector('.moreBtn').style.display = 'block';
         
-        gsroffset = data.continue.gsroffset;
+        loadMore = data.continue.gsroffset;
     } 
 };
 
