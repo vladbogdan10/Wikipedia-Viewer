@@ -21,7 +21,7 @@ input {
 
 .wrapper {
     text-align: center;
-    margin-top: 30vh;
+    margin-top: 32vh;
 }
 
 .input-field {
@@ -34,44 +34,67 @@ input {
     border-radius: 20px 0 0 20px;
 }
 
-.submit {
-    cursor: pointer;
+.submitBtn {
     border: none;
-    color: white;
+    color: #1E1E20;
     font-size: 24px;
-    background-color: #1E1E20;
-    border-radius: 0 20px 20px 0;
-    width: 100px;
+    background-color: white;
+    width: 32px;
     height: 50px;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
     margin-left: -5px;
     outline: none;
 }
 
-.submit:hover {
-    font-size: 28px;
+.randomBtn {
+    border: none;
+    color: #1E1E20;
+    font-size: 24px;
+    background-color: white;
+    width: 60px;
+    height: 50px;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
+    border-right: 1px solid #b3b3b3;
+    border-radius: 0 20px 20px 0;
+    margin-left: -5px;
+    outline: none;
 }
 
-.submit:active {
-    margin-top: 2px;
+i {
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+i:hover {
+    cursor: pointer;
+    font-size: 26px;
+}
+
+i:active {
+    transform: translateY(4px);
 }
 
 h4 {
     border-bottom: 1px solid #F0F0F0;
 }
 
+#search-results {
+    padding-top: 120px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 
 /* Display content from query search */
 
 .wiki-content {
-    position: relative;
-    top: 120px;
+    padding-top: 100px;
     border: 1px solid #F6F6F6;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
     background-color: #F9F9F9;
-    max-width: 900px;
     text-align: justify;
-    margin: 0 auto;
     border-radius: 8px;
     box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.4);
     margin-bottom: 12px;
@@ -87,19 +110,19 @@ h4 {
 }
 
 a:link {
-    color: #333333;
+    color: #1E1E20;
     text-decoration: none;
 }
 
 a:visited {
-    color: #717171;
+    color: #1E1E20;
 }
 
 .move-input-up {
     position: fixed;
     width: 100%;
     top: 0;
-    left: 0px;
+    left: 0;
     z-index: 1;
     margin-top: 0px;
     background-color: white;
@@ -108,14 +131,14 @@ a:visited {
     box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
 
-.moreBtn {
-    margin-top: 140px;
-    margin-bottom: 40px;
+.btn {
+    margin-top: 30px;
+    margin-bottom: 50px;
     text-align: center;
     display: none;
 }
 
-.btn {
+.moreBtn {
     background-color: #F9F9F9;
     outline: none;
     color: #4B4B4B;
@@ -125,26 +148,15 @@ a:visited {
     font-size: 14px;
     border: 1px solid #EAEAEA;
     box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.4);
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
     cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #555555;
-    color: white;
+.moreBtn:hover {
+    background-color: #F0F0F0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.moreBtn:active {
+    transform: translateY(4px);
+}

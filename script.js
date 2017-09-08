@@ -18,29 +18,29 @@ function getJSONP() {
 
 // Callback function to manipulate data recived from API call
 function jsonData(data) {
-    
+
     data.query.pages.forEach(function (el) {
 
         var wikiContent = '<a href=" ' + el.fullurl + ' " target="_blank"><div class="wiki-content" id="card-' + el + '"><h4>' + el.title + '</h4>' + el.extract + '..' + '</div></a>';
 
         document.querySelector('#search-results').innerHTML += wikiContent;
     });
-    
+
     if (data.hasOwnProperty("continue")) {
-        
-        document.querySelector('.moreBtn').style.display = 'block';
-        
+
+        document.querySelector('.btn').style.display = 'block';
+
         loadMore = data.continue.gsroffset;
-    } 
+    }
 };
 
 
 function DOMControl() {
-    
+
     userInput = document.querySelector('.input-field').value;
-    
+
     if (userInput !== '') {
-        
+
         getJSONP();
 
         document.querySelector('.wrapper').classList.add('move-input-up');
@@ -54,8 +54,8 @@ function DOMControl() {
 
 
 function setupEventListeners() {
-    
-    document.querySelector('.submit').addEventListener('click', function () {
+
+    document.querySelector('.fa-search').addEventListener('click', function () {
         DOMControl();
     });
 
@@ -64,8 +64,8 @@ function setupEventListeners() {
             DOMControl();
         }
     });
-    
-    document.querySelector('.moreBtn').addEventListener('click', function() {
+
+    document.querySelector('.moreBtn').addEventListener('click', function () {
         getJSONP();
     });
 };
