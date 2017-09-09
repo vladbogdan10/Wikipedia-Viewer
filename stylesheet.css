@@ -62,17 +62,17 @@ input {
     outline: none;
 }
 
-i {
+.fa {
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
 
-i:hover {
+.fa:hover {
     cursor: pointer;
     font-size: 26px;
 }
 
-i:active {
+.fa:active {
     transform: translateY(4px);
 }
 
