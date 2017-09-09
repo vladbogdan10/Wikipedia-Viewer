@@ -16,6 +16,24 @@ function getJSONP() {
 };
 
 
+function setupEventListeners() {
+
+    document.querySelector('.fa-search').addEventListener('click', function () {
+        DOMControl();
+    });
+
+    document.addEventListener('keypress', function (event) {
+        if (event.keyCode === 13 || event.which === 13) {
+            DOMControl();
+        }
+    });
+
+    document.querySelector('.moreBtn').addEventListener('click', function () {
+        getJSONP();
+    });
+};
+
+
 // Callback function to manipulate data recived from API call
 function jsonData(data) {
 
@@ -50,24 +68,6 @@ function DOMControl() {
         document.querySelector('#search-results').innerHTML = "";
     }
     document.querySelector('.input-field').value = "";
-};
-
-
-function setupEventListeners() {
-
-    document.querySelector('.fa-search').addEventListener('click', function () {
-        DOMControl();
-    });
-
-    document.addEventListener('keypress', function (event) {
-        if (event.keyCode === 13 || event.which === 13) {
-            DOMControl();
-        }
-    });
-
-    document.querySelector('.moreBtn').addEventListener('click', function () {
-        getJSONP();
-    });
 };
 
 setupEventListeners();
