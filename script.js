@@ -18,7 +18,7 @@ function getJSONP() {
 
 function setupEventListeners() {
 
-    document.querySelector('.fa-search').addEventListener('click', function () {
+    document.querySelector('.submitBtn').addEventListener('click', function () {
         DOMControl();
     });
 

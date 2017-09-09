@@ -43,7 +43,7 @@ input {
     color: #1E1E20;
     font-size: 24px;
     background-color: rgba(0, 0, 0, 0);
-    width: 45px;
+    width: 50px;
     height: 50px;
     border-top: 1px solid #b3b3b3;
     border-bottom: 1px solid #b3b3b3;
@@ -66,17 +66,17 @@ input {
     outline: none;
 }
 
-.fa {
+i, .fa {
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
 
-.fa:hover {
+button, #buttons:hover i {
     cursor: pointer;
     font-size: 26px;
 }
 
-.fa:active {
+#buttons:active i {
     transform: translateY(4px);
 }
 
