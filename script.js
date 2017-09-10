@@ -13,7 +13,7 @@ function getJSONP() {
 
     //Append the script element to the HEAD section.
     document.getElementsByTagName('head')[0].appendChild(script);
-};
+}
 
 
 function setupEventListeners() {
@@ -31,11 +31,12 @@ function setupEventListeners() {
     document.querySelector('.moreBtn').addEventListener('click', function () {
         getJSONP();
     });
-};
+}
 
 
 // Callback function to manipulate data recived from API call
 function jsonData(data) {
+    console.log(data);
 
     data.query.pages.forEach(function (el) {
 
@@ -50,7 +51,7 @@ function jsonData(data) {
 
         loadMore = data.continue.gsroffset;
     }
-};
+}
 
 
 function DOMControl() {
@@ -68,6 +69,6 @@ function DOMControl() {
         document.querySelector('#search-results').innerHTML = "";
     }
     document.querySelector('.input-field').value = "";
-};
+}
 
 setupEventListeners();
